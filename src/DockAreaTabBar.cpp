@@ -478,6 +478,7 @@ void CDockAreaTabBar::onTabWidgetMoved(const QPoint& GlobalPos)
 	// Now check if the mouse is behind the last tab
 	if (toIndex < 0)
 	{
+        auto cnt = this->count();
 		if (MousePos.x() > tab(count() - 1)->geometry().right())
 		{
 			qDebug() << "after all tabs";
