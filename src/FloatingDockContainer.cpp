@@ -310,15 +310,16 @@ void CFloatingDockContainer::closeEvent(QCloseEvent *event)
 {
     qDebug() << "CFloatingDockContainer closeEvent";
 	d->setState(DraggingInactive);
-
-    if (isClosable())
-    {
-    	QWidget::closeEvent(event);
-    }
-    else
-    {
-        event->ignore();
-    }
+    hide();
+    event->ignore();
+//     if (isClosable())
+//     {
+//     	QWidget::closeEvent(event);
+//     }
+//     else
+//     {
+//         event->ignore();
+//     }
 }
 
 
