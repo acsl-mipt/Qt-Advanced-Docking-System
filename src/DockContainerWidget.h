@@ -168,6 +168,8 @@ public:
 	CDockAreaWidget* addDockWidget(DockWidgetArea area, CDockWidget* Dockwidget,
 		CDockAreaWidget* DockAreaWidget = nullptr);
 
+    void removeDockWidget(CDockWidget* Dockwidget);
+
 	/**
 	 * Returns the current zOrderIndex
 	 */

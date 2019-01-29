@@ -437,16 +437,19 @@ void CDockAreaWidget::removeDockWidget(CDockWidget* DockWidget)
 
 	d->updateCloseButtonState();
 	updateTitleBarVisibility();
-	auto TopLevelDockWidget = dockContainer()->topLevelDockWidget();
-	if (TopLevelDockWidget)
-	{
-		TopLevelDockWidget->emitTopLevelChanged(true);
-	}
+    if (dockContainer())
+    {
+        auto TopLevelDockWidget = dockContainer()->topLevelDockWidget();
+        if (TopLevelDockWidget)
+        {
+            TopLevelDockWidget->emitTopLevelChanged(true);
+        }
 
 #if (ADS_DEBUG_LEVEL > 0)
-	CDockContainerWidget* DockContainer = dockContainer();
-	DockContainer->dumpLayout();
+        CDockContainerWidget* DockContainer = dockContainer();
+        DockContainer->dumpLayout();
 #endif
+    }
 }
 
 

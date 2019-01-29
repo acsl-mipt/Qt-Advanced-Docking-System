@@ -556,6 +556,28 @@ CDockAreaWidget* CDockManager::addDockWidget(DockWidgetArea area,
 }
 
 
+void CDockManager::removeDockWidget(CDockWidget* Dockwidget)
+{
+    int res = d->DockWidgetsMap.remove(Dockwidget->objectName());
+    if (res == 0)
+        return;
+    Dockwidget->toggleViewAction()->deleteLater();
+
+    auto dockContainer = Dockwidget->dockContainer();
+    if (dockContainer->isFloating() && dockContainer->dockWidgets().size() == 1)
+    {
+        auto floatingContainer = dockContainer->floatingWidget();
+        d->FloatingWidgets.removeAll(floatingContainer);
+        floatingContainer->deleteLater();
+    }
+    else
+    {
+        removeDockContainer(Dockwidget->dockContainer());
+        CDockContainerWidget::removeDockWidget(Dockwidget);
+    }
+    Dockwidget->deleteLater();
+}
+
 //============================================================================
 CDockAreaWidget* CDockManager::addDockWidgetTab(DockWidgetArea area,
 	CDockWidget* Dockwidget)

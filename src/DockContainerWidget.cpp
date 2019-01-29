@@ -997,6 +997,12 @@ CDockAreaWidget* CDockContainerWidget::addDockWidget(DockWidgetArea area, CDockW
 }
 
 
+void CDockContainerWidget::removeDockWidget(CDockWidget* Dockwidget)
+{
+    auto dockArea = Dockwidget->dockAreaWidget();
+    dockArea->removeDockWidget(Dockwidget);
+}
+
 //============================================================================
 unsigned int CDockContainerWidget::zOrderIndex() const
 {

@@ -169,6 +169,7 @@ public:
 	CDockAreaWidget* addDockWidget(DockWidgetArea area, CDockWidget* Dockwidget,
 		CDockAreaWidget* DockAreaWidget = nullptr);
 
+    void removeDockWidget(CDockWidget* Dockwidget);
 	/**
 	 * This function will add the given Dockwidget to the given dock area as
 	 * a new tab.
